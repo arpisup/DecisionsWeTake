@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Daily Reflection Tree — an end-of-day reflection tool guiding you through agency, contribution, and transcendence.">
+    <title>The Daily Reflection Tree</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="particles-canvas"></div>
+
+    <div id="app">
+        <!-- Landing Screen -->
+        <div id="landing-screen" class="screen active">
+            <div class="landing-content">
+                <div class="tree-icon">
+                    <svg viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 10 C25 25, 10 35, 15 50 C18 58, 28 55, 30 60 C20 58, 8 65, 15 78 C20 85, 32 80, 35 85 L35 95 L45 95 L45 85 C48 80, 60 85, 65 78 C72 65, 60 58, 50 60 C52 55, 62 58, 65 50 C70 35, 55 25, 40 10Z" fill="url(#treeGrad)" opacity="0.9"/>
+                        <defs>
+                            <linearGradient id="treeGrad" x1="15" y1="10" x2="65" y2="95">
+                                <stop offset="0%" stop-color="#d4a574"/>
+                                <stop offset="100%" stop-color="#8b6f47"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h1 class="landing-title">The Daily Reflection Tree</h1>
+                <p class="landing-subtitle">A quiet space to look back at your day — not to judge it, but to understand it.</p>
+                <button id="begin-btn" class="primary-btn">Begin Your Reflection</button>
+                <p class="landing-note">Takes about 3–5 minutes</p>
+            </div>
+        </div>
+
+        <!-- Reflection Screen -->
+        <div id="reflection-screen" class="screen">
+            <div class="progress-bar-container">
+                <div class="progress-labels">
+                    <span class="progress-label" data-axis="1">Locus</span>
+                    <span class="progress-label" data-axis="2">Orientation</span>
+                    <span class="progress-label" data-axis="3">Radius</span>
+                </div>
+                <div class="progress-track">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div id="node-container" class="node-container">
+                <div id="axis-badge" class="axis-badge hidden"></div>
+                <div id="node-text" class="node-text"></div>
+                <div id="options-container" class="options-container"></div>
+                <button id="continue-btn" class="continue-btn hidden">Continue</button>
+            </div>
+        </div>
+
+        <!-- Summary Screen -->
+        <div id="summary-screen" class="screen">
+            <div class="summary-content">
+                <h2 class="summary-title">Your Reflection</h2>
+                <div class="summary-axes">
+                    <div class="summary-axis" id="summary-axis1">
+                        <div class="axis-icon">◐</div>
+                        <h3>Agency</h3>
+                        <div class="axis-spectrum">
+                            <span class="spectrum-pole">Shaped by events</span>
+                            <div class="spectrum-bar">
+                                <div class="spectrum-indicator" id="indicator-axis1"></div>
+                            </div>
+                            <span class="spectrum-pole">Driver of events</span>
+                        </div>
+                        <p class="axis-insight" id="insight-axis1"></p>
+                    </div>
+                    <div class="summary-axis" id="summary-axis2">
+                        <div class="axis-icon">◑</div>
+                        <h3>Orientation</h3>
+                        <div class="axis-spectrum">
+                            <span class="spectrum-pole">Focused on receiving</span>
+                            <div class="spectrum-bar">
+                                <div class="spectrum-indicator" id="indicator-axis2"></div>
+                            </div>
+                            <span class="spectrum-pole">Focused on giving</span>
+                        </div>
+                        <p class="axis-insight" id="insight-axis2"></p>
+                    </div>
+                    <div class="summary-axis" id="summary-axis3">
+                        <div class="axis-icon">◕</div>
+                        <h3>Radius</h3>
+                        <div class="axis-spectrum">
+                            <span class="spectrum-pole">Centered on self</span>
+                            <div class="spectrum-bar">
+                                <div class="spectrum-indicator" id="indicator-axis3"></div>
+                            </div>
+                            <span class="spectrum-pole">Extended to others</span>
+                        </div>
+                        <p class="axis-insight" id="insight-axis3"></p>
+                    </div>
+                </div>
+                <div class="summary-closing" id="summary-closing"></div>
+                <div class="summary-path" id="summary-path">
+                    <h3>Your Path Through the Tree</h3>
+                    <div id="path-steps"></div>
+                </div>
+                <button id="restart-btn" class="primary-btn">Reflect Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
